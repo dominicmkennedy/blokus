@@ -1,5 +1,7 @@
 import numpy as np
 import numpy.typing as npt
+import pygame
+import pygame.gfxdraw
 
 
 coord = tuple[int, int]
@@ -69,3 +71,20 @@ def valid_move(
     print(p.squares)
 
     return True
+
+
+pygame.init()
+screen = pygame.display.set_mode((1000, 1000))
+
+
+def draw_grid(s: pygame.Surface):
+    s.fill("grey")
+    for i in range(50, 1000, 50):
+        pygame.gfxdraw.hline(s, 0, 1000, i, (255, 0, 0))
+        pygame.gfxdraw.vline(s, i, 0, 1000, (255, 0, 0))
+
+
+while True:
+    draw_grid(screen)
+
+    pygame.display.flip()
